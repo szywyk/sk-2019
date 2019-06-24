@@ -48,7 +48,7 @@ włączenie interfejsów (ip link set nazwa_interfejsu up)
     net.ipv4.ip_forward=1 
   w pliku /etc/sysctl.d/99-sysctl.conf
   
-6. Dodanie reguły masquerade na PC0
+6. Dodanie reguły masquerade na PC0<br>
     iptables -t nat -A POSTROUTING -s 172.22.128.0/23 -o enp0s3 -j MASQUERADE<br>
     iptables -t nat -A POSTROUTING -s 172.22.160.0/19 -o enp0s3 -j MASQUERADE<br>
   Aby reguły były zapamiętane należy je zapisać<br>
