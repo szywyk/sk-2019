@@ -43,18 +43,18 @@ włączenie interfejsów (ip link set nazwa_interfejsu up)
     ip route add default via 172.22.160.1
     
 5. Włączenie forwardowania pakietów na PC0
-    echo 1 > /proc/sys/net/ipv4/ip_forward
+    echo 1 > /proc/sys/net/ipv4/ip_forward<br>
   Aby forwarding był stale włączony należy odkomentować linijkę 
     net.ipv4.ip_forward=1 
   w pliku /etc/sysctl.d/99-sysctl.conf
   
 6. Dodanie reguły masquerade na PC0
-    iptables -t nat -A POSTROUTING -s 172.22.128.0/23 -o enp0s3 -j MASQUERADE
-    iptables -t nat -A POSTROUTING -s 172.22.160.0/19 -o enp0s3 -j MASQUERADE
-  Aby reguły były zapamiętane należy je zapisać
-    ipatables-save > /etc/iptables.up.rules
-  Potem w pliku /etc/network/interfaces dodać komendę
-    post-up iptables-restore < /etc/iptables.up.rules
+    iptables -t nat -A POSTROUTING -s 172.22.128.0/23 -o enp0s3 -j MASQUERADE<br>
+    iptables -t nat -A POSTROUTING -s 172.22.160.0/19 -o enp0s3 -j MASQUERADE<br>
+  Aby reguły były zapamiętane należy je zapisać<br>
+    ipatables-save > /etc/iptables.up.rules<br>
+  Potem w pliku /etc/network/interfaces dodać komendę<br>
+    post-up iptables-restore < /etc/iptables.up.rules<br>
   żeby po starcie systemu zapisane reguły zostały wczytane
   
 7. Dodanie adresów dns do PC1 i PC2
